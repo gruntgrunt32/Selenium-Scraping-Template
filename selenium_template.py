@@ -22,18 +22,13 @@ def load_cookies(driver):
 
 def browser_init():
     chrome_options = Options()
-    # add proxy to chrome options 108.59.14.203:13010
-    # chrome_options.add_argument("--proxy-server=108.59.14.203:13010")
-    # Mimic a real user's browser by setting user agent and user data directory.
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36")
     chrome_options.add_argument("--user-data-dir=C:\\Users\\omnil\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
-    # Add more options to make automated browser more like a regular user's browser.
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
-
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     driver.get('https://www.google.com/')
     load_cookies(driver)
